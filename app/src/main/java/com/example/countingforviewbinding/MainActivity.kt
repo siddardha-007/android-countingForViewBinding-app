@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.databinding.DataBindingUtil
 import com.example.countingforviewbinding.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,17 +16,33 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+
+        val counter = Counter(
+            count = 0,
+            username = "siddu"
+        )
+
+        binding.counter = counter;
 
         binding.btnIncrease.setOnClickListener {
             count++
-            binding.tvCount.text = "Count: $count"
+            counter.count = count
+            binding.invalidateAll()
         }
 
+        binding.btnDecrease.setOnClickListener {
+            count--
+            counter.count = count
+            binding.invalidateAll()
+        }
         binding.btnReset.setOnClickListener {
+
             count = 0
-            binding.tvCount.text = "Count: $count"
+
+            counter.count = 0
+
+            binding.invalidateAll()
         }
     }
 }
