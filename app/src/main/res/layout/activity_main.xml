@@ -15,12 +15,18 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter name"
+            android:text='@={counter.username}'/>
+
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text='@{"Welcome " + counter.username}'
+            android:text='@{counter.username}'
             android:textSize="22sp"/>
 
         <TextView

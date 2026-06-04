@@ -21,15 +21,19 @@ class MainActivity : AppCompatActivity() {
 
         binding.counter = counter;
 
+
         binding.btnIncrease.setOnClickListener {
             counter.count++
+            binding.invalidateAll()
         }
 
         binding.btnDecrease.setOnClickListener {
             counter.count--
+            binding.invalidateAll()
         }
         binding.btnReset.setOnClickListener {
             counter.count = 0
+            binding.invalidateAll()
         }
     }
 }
