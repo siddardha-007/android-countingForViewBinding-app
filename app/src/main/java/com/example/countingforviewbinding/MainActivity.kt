@@ -12,37 +12,24 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
-        val counter = Counter(
-            count = 0,
-            username = "siddu"
-        )
+        val counter = Counter()
 
         binding.counter = counter;
 
         binding.btnIncrease.setOnClickListener {
-            count++
-            counter.count = count
-            binding.invalidateAll()
+            counter.count++
         }
 
         binding.btnDecrease.setOnClickListener {
-            count--
-            counter.count = count
-            binding.invalidateAll()
+            counter.count--
         }
         binding.btnReset.setOnClickListener {
-
-            count = 0
-
             counter.count = 0
-
-            binding.invalidateAll()
         }
     }
 }
