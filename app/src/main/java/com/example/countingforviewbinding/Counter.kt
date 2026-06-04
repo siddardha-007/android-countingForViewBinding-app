@@ -5,5 +5,5 @@ import androidx.databinding.Bindable
 
 class Counter {
     var count = 0
-    var username = "Siddu"
+    var username = ""
 }
